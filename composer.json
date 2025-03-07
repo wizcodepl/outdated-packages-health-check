@@ -17,7 +17,7 @@
         }
     ],
     "require": {
-        "php": "^8.4",
+        "php": "^8.0",
         "spatie/laravel-package-tools": "^1.16",
         "illuminate/contracts": "^10.0||^11.0||^12.0"
     },
@@ -37,13 +37,13 @@
     },
     "autoload": {
         "psr-4": {
-            "VendorName\\Skeleton\\": "src/",
-            "VendorName\\Skeleton\\Database\\Factories\\": "database/factories/"
+            "Wizcode\\OutdatedPackagesHealthCheck\\": "src/",
+            "Wizcode\\OutdatedPackagesHealthCheck\\Database\\Factories\\": "database/factories/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "VendorName\\Skeleton\\Tests\\": "tests/",
+            "Wizcode\\OutdatedPackagesHealthCheck\\Tests\\": "tests/",
             "Workbench\\App\\": "workbench/app/"
         }
     },
@@ -65,10 +65,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "VendorName\\Skeleton\\SkeletonServiceProvider"
+                "Wizcode\\OutdatedPackagesHealthCheck\\OutdatedPackagesHealthCheckServiceProvider"
             ],
             "aliases": {
-                "Skeleton": "VendorName\\Skeleton\\Facades\\Skeleton"
+                "OutdatedPackagesHealthCheck": "Wizcode\\OutdatedPackagesHealthCheck\\Facades\\OutdatedPackagesHealthCheck"
             }
         }
     },
