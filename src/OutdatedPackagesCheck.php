@@ -1,6 +1,6 @@
 <?php
 
-namespace Wizcode\OutdatedPackagesHealthCheck;
+namespace WizcodePl\OutdatedPackagesHealthCheck;
 
 use Spatie\Health\Checks\Check;
 use Spatie\Health\Checks\Result;

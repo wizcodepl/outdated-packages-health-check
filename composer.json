@@ -37,13 +37,13 @@
     },
     "autoload": {
         "psr-4": {
-            "Wizcode\\OutdatedPackagesHealthCheck\\": "src/",
-            "Wizcode\\OutdatedPackagesHealthCheck\\Database\\Factories\\": "database/factories/"
+            "WizcodePl\\OutdatedPackagesHealthCheck\\": "src/",
+            "WizcodePl\\OutdatedPackagesHealthCheck\\Database\\Factories\\": "database/factories/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Wizcode\\OutdatedPackagesHealthCheck\\Tests\\": "tests/",
+            "WizcodePl\\OutdatedPackagesHealthCheck\\Tests\\": "tests/",
             "Workbench\\App\\": "workbench/app/"
         }
     },
@@ -65,10 +65,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Wizcode\\OutdatedPackagesHealthCheck\\OutdatedPackagesHealthCheckServiceProvider"
+                "WizcodePl\\OutdatedPackagesHealthCheck\\OutdatedPackagesHealthCheckServiceProvider"
             ],
             "aliases": {
-                "OutdatedPackagesHealthCheck": "Wizcode\\OutdatedPackagesHealthCheck\\Facades\\OutdatedPackagesHealthCheck"
+                "OutdatedPackagesHealthCheck": "WizcodePl\\OutdatedPackagesHealthCheck\\Facades\\OutdatedPackagesHealthCheck"
             }
         }
     },
