@@ -62,16 +62,6 @@
             "phpstan/extension-installer": true
         }
     },
-    "extra": {
-        "laravel": {
-            "providers": [
-                "WizcodePl\\OutdatedPackagesHealthCheck\\OutdatedPackagesHealthCheckServiceProvider"
-            ],
-            "aliases": {
-                "OutdatedPackagesHealthCheck": "WizcodePl\\OutdatedPackagesHealthCheck\\Facades\\OutdatedPackagesHealthCheck"
-            }
-        }
-    },
     "minimum-stability": "dev",
     "prefer-stable": true
 }
