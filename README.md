@@ -23,7 +23,7 @@ composer require wizcodepl/outdated-packages-health-check
 
 ```bash
 use Spatie\Health\Facades\Health;
-use Spatie\SecurityAdvisoriesHealthCheck\SecurityAdvisoriesCheck;
+use WizcodePl\OutdatedPackagesHealthCheck\OutdatedPackagesCheck;
 
 Health::checks([
     OutdatedPackagesCheck::new()
