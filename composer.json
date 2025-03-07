@@ -1,17 +1,18 @@
 {
-    "name": ":vendor_slug/:package_slug",
-    "description": ":package_description",
+    "name": "wizcodepl/outdated-packages-health-check",
+    "description": "This package contains a Laravel Health check that can report any outdated PHP packages installed in your application using Composer.",
     "keywords": [
-        ":vendor_name",
+        "wizcode",
+        "wizcodepl",
         "laravel",
-        ":package_slug"
+        "outdated-packages-health-check"
     ],
-    "homepage": "https://github.com/:vendor_slug/:package_slug",
+    "homepage": "https://github.com/wizcodepl/outdated-packages-health-check",
     "license": "MIT",
     "authors": [
         {
-            "name": ":author_name",
-            "email": "author@domain.com",
+            "name": "Jakub Szcześniak",
+            "email": "jakub.szczesniak@wizcode.pl",
             "role": "Developer"
         }
     ],
@@ -31,7 +32,8 @@
         "phpstan/extension-installer": "^1.3||^2.0",
         "phpstan/phpstan-deprecation-rules": "^1.1||^2.0",
         "phpstan/phpstan-phpunit": "^1.3||^2.0",
-        "spatie/laravel-ray": "^1.35"
+        "spatie/laravel-ray": "^1.35",
+        "spatie/laravel-health": "^1.22.0"
     },
     "autoload": {
         "psr-4": {
