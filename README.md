@@ -9,10 +9,7 @@
 This package contains a Laravel Health check that can report any outdated PHP packages installed in your application using Composer.
 
 ## About us
-
-[<img src="https://github-ads.s3.eu-central-1.amazonaws.com/outdated-packages-health-check.jpg?t=1" width="419px" />](https://spatie.be/github-ad-click/outdated-packages-health-check)
-
-We invest a lot of resources into creating.
+Wizcode builds expandable MVPs with lightning-speed development solutions. We create scalable web platforms, mobile apps, and IoT solutions. Check for more: https://wizcode.pl
 
 ## Installation
 
@@ -29,7 +26,10 @@ use Spatie\Health\Facades\Health;
 use Spatie\SecurityAdvisoriesHealthCheck\SecurityAdvisoriesCheck;
 
 Health::checks([
-    OutdatedPackagesCheck::new()->direct()->includeDev()->composerPath('/path/to/composer.json'),
+    OutdatedPackagesCheck::new()
+        ->direct()
+        ->includeDev()
+        ->composerPath('/path/to/composer.json'),
 ]);
 ```
 
