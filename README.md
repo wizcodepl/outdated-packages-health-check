@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="art/logo.svg" alt="Outdated Packages Health Check" width="200">
+</p>
+
 # This package contains a Laravel Health check that can report any outdated PHP packages installed in your application using Composer.
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/wizcodepl/outdated-packages-health-check.svg?style=flat-square)](https://packagist.org/packages/wizcodepl/outdated-packages-health-check)

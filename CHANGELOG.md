@@ -2,7 +2,7 @@
 
 All notable changes to `outdated-packages-health-check` will be documented in this file.
 
-## 1.1.0 - 2026-05-05
+## 1.0.4 - 2026-05-06
 
 ### Added
 - `alertOnLevels(array $levels)` to restrict the check to specific semver bump levels — only alert when a package has a major / minor / patch update available, not on every release.
