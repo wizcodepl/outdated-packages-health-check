@@ -21,7 +21,7 @@ composer require wizcodepl/outdated-packages-health-check
 
 ## Usage
 
-```bash
+```php
 use Spatie\Health\Facades\Health;
 use WizcodePl\OutdatedPackagesHealthCheck\OutdatedPackagesCheck;
 
@@ -29,8 +29,40 @@ Health::checks([
     OutdatedPackagesCheck::new()
         ->direct()
         ->includeDev()
-        ->composerPath('/path/to/composer.json'),
+        ->composerPath('/path/to/composer'),
 ]);
+```
+
+By default the check **warns when ANY package has a newer release** (patch / minor / major). On a busy app this is noisy — every patch bump turns the dashboard yellow. To get signal on only the bumps that matter to you, restrict alert levels:
+
+```php
+// Alert only on major bumps (1.x.x → 2.0.0). Patch and minor still appear in `meta`,
+// but they don't drive the check status.
+OutdatedPackagesCheck::new()->onlyMajor();
+
+// Alert on minor and major (e.g. 1.2.x → 1.3.0 or 2.0.0).
+OutdatedPackagesCheck::new()->minorAndAbove();
+
+// Or pick the exact set yourself:
+OutdatedPackagesCheck::new()->alertOnLevels([
+    OutdatedPackagesCheck::LEVEL_MAJOR,
+    OutdatedPackagesCheck::LEVEL_MINOR,
+]);
+```
+
+Versions that can't be parsed as `MAJOR.MINOR.PATCH` (e.g. `dev-main`, prerelease tags with the same numeric core) are bucketed as `LEVEL_UNKNOWN` and are alerted alongside `LEVEL_MAJOR` by `onlyMajor()` and `minorAndAbove()` — better to alarm wrongly than to silently miss a real upgrade.
+
+The result's `meta` always contains the full picture, so dashboards can show what's outdated regardless of alerting:
+
+```php
+[
+    'outdated_total' => 7,
+    'outdated_by_level' => ['major' => 1, 'minor' => 2, 'patch' => 4, 'unknown' => 0],
+    'alert_levels' => ['major', 'unknown'],
+    'alerting_packages' => [
+        ['name' => 'vendor/x', 'version' => '1.2.3', 'latest' => '2.0.0', 'level' => 'major'],
+    ],
+]
 ```
 
 ## Changelog

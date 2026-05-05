@@ -1,5 +1,7 @@
 <?php
 
-use Wizcode\OutdatedPackagesHealthCheck\Tests\TestCase;
+declare(strict_types=1);
+
+use WizcodePl\OutdatedPackagesHealthCheck\Tests\TestCase;
 
 uses(TestCase::class)->in(__DIR__);
