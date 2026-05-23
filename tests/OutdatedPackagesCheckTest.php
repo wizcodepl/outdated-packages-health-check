@@ -3,14 +3,14 @@
 declare(strict_types=1);
 
 use Spatie\Health\Enums\Status;
-use WizcodePl\OutdatedPackagesHealthCheck\OutdatedPackagesCheck;
+use WizcodePl\OutdatedPackagesHealthCheck\OutdatedPackagesHealthCheck;
 
 /**
  * Test double that bypasses the real `composer outdated` call so the rest
  * of the check can be exercised in isolation. Kept inside the test file
  * (not as a tests/Doubles class) — it's only ever used here.
  */
-class FakeOutdatedCheck extends OutdatedPackagesCheck
+class FakeOutdatedCheck extends OutdatedPackagesHealthCheck
 {
     /** @var array<int, array<string, mixed>> */
     public array $fakeInstalled = [];
@@ -32,15 +32,15 @@ class FakeOutdatedCheck extends OutdatedPackagesCheck
 // ---------------------------------------------------------------------------
 
 it('classifies bumps by semver level', function (string $from, string $to, string $expected) {
-    expect((new OutdatedPackagesCheck)->detectLevel($from, $to))->toBe($expected);
+    expect((new OutdatedPackagesHealthCheck)->detectLevel($from, $to))->toBe($expected);
 })->with([
-    'patch' => ['1.2.3', '1.2.4', OutdatedPackagesCheck::LEVEL_PATCH],
-    'minor' => ['1.2.3', '1.3.0', OutdatedPackagesCheck::LEVEL_MINOR],
-    'major' => ['1.2.3', '2.0.0', OutdatedPackagesCheck::LEVEL_MAJOR],
-    'v-prefix is stripped' => ['v1.2.3', 'v1.2.4', OutdatedPackagesCheck::LEVEL_PATCH],
-    'pre-release-ish core same → unknown' => ['1.2.3-rc1', '1.2.3', OutdatedPackagesCheck::LEVEL_UNKNOWN],
-    'dev branch is unknown' => ['dev-main', '1.0.0', OutdatedPackagesCheck::LEVEL_UNKNOWN],
-    'major bump from prerelease' => ['2.0.0-beta1', '3.0.0', OutdatedPackagesCheck::LEVEL_MAJOR],
+    'patch' => ['1.2.3', '1.2.4', OutdatedPackagesHealthCheck::LEVEL_PATCH],
+    'minor' => ['1.2.3', '1.3.0', OutdatedPackagesHealthCheck::LEVEL_MINOR],
+    'major' => ['1.2.3', '2.0.0', OutdatedPackagesHealthCheck::LEVEL_MAJOR],
+    'v-prefix is stripped' => ['v1.2.3', 'v1.2.4', OutdatedPackagesHealthCheck::LEVEL_PATCH],
+    'pre-release-ish core same → unknown' => ['1.2.3-rc1', '1.2.3', OutdatedPackagesHealthCheck::LEVEL_UNKNOWN],
+    'dev branch is unknown' => ['dev-main', '1.0.0', OutdatedPackagesHealthCheck::LEVEL_UNKNOWN],
+    'major bump from prerelease' => ['2.0.0-beta1', '3.0.0', OutdatedPackagesHealthCheck::LEVEL_MAJOR],
 ]);
 
 // ---------------------------------------------------------------------------
@@ -120,7 +120,7 @@ it('treats unparseable versions as major (alerts under onlyMajor)', function () 
     $result = $check->run();
 
     expect($result->status)->toBe(Status::warning())
-        ->and($result->meta['alerting_packages'][0]['level'])->toBe(OutdatedPackagesCheck::LEVEL_UNKNOWN);
+        ->and($result->meta['alerting_packages'][0]['level'])->toBe(OutdatedPackagesHealthCheck::LEVEL_UNKNOWN);
 });
 
 it('returns failed when composer outdated cannot be read', function () {

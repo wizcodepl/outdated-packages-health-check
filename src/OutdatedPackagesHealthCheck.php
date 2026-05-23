@@ -8,7 +8,7 @@ use Spatie\Health\Checks\Check;
 use Spatie\Health\Checks\Result;
 use Symfony\Component\Process\Process;
 
-class OutdatedPackagesCheck extends Check
+class OutdatedPackagesHealthCheck extends Check
 {
     public const LEVEL_MAJOR = 'major';
 
